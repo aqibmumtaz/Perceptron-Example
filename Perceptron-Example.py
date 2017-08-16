@@ -2,6 +2,12 @@
 
 import numpy as np
 
+
+
+# Print floats in readable format to print like float: 3.0, or float: 12.6666666666.
+np.set_printoptions(formatter={'float': lambda x: 'float: ' + str(x)})
+
+
 # This code is a definition of the sigmoid function, which is the type of non-linearity chosen for this neural net. It is not the only type of non-linearity that can be chosen, but is has nice analytical features and is easy to teach with.
 
 def nonlin(x, deriv=False):
@@ -28,8 +34,12 @@ y = np.array([[0],
 np.random.seed(1)
 
 # Initialization of weights to random numbers. syn0 is weight matrix between input layer and output layer. since our network is perception so it has one input layer and one output layout
-syn0 = 2 * np.random.random((3, 1)) - 1
+l0Nodes = 3
+l1Nodes = 1
+syn0 = 2 * np.random.random((l0Nodes, l1Nodes)) - 1
 
+print("\n======= Perceptron (Artificial Neural Network with no hidden layers) =======")
+print("==== Network Topology ", l0Nodes, " x ", l1Nodes, " ====\n")
 
 # This is iteration training loop for network training. error decreases on each cycle of training by the slop of sigmoid function.
 iterations = 100000
